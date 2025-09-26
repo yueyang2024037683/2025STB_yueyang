@@ -40,7 +40,7 @@ boxplot(survey$Age, main="여러분의 나이 분포", col="green")
 
 #박스플롯 작성3:병렬 비교 
 boxplot(survey$Grade, survey$Age, main="Grade별Age를비교하는박스플롯", col="red", names = c("하년","나이"))
-
+ 
 #산점도1
 plot(x=survey$Grade, y=survey$Age, xlab="학년", ylab="나이", main="학년와 나이의 변화")
 
