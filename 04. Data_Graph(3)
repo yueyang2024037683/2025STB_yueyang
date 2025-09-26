@@ -1,0 +1,57 @@
+> library(readxl)
+> survey <- read_excel("04. 2025STB_survey.xlsx")
+> View(survey)
+
+# table()함수/구분 1개의 인자를 가지고 도수분포표 작성
+table(survey$Gender)#성별
+
+# table()함수/구분 1개의 인자를 가지고 상대도수분포표를 작성
+ECN <- table(survey$Gender)#ECN에 성별의 도수분포표를 대입
+prop.table(ECN)#상대 도수로 표시
+
+# table()함수/구분 2개의 인자를 가지고 교차표를 작성
+table(survey$Gender, Ksurvey$Grade)
+
+#막대그래프1
+barplot(table(survey$Nationality))
+
+# table()함수/구분 1개의 인자를 가지고 (가로)막대그래프를 작성
+barplot(table(survey$`Residential area`))#주거지역
+
+#누적-막대그래프
+entry <- table(survey$Gender, survey$Grade)
+barplot(entry, legend = TRUE)
+
+#파이차트1
+pie(table(survey$Grade))
+
+#히스토그램 작성1
+hist(survey$Age,col=terrain.colors(12))
+
+> summary(survey)
+    Gender               Age            Grade       Nationality        Residential area  
+ Length:47          Min.   :19.00   Min.   :2.000   Length:47          Length:47         
+ Class :character   1st Qu.:21.00   1st Qu.:2.000   Class :character   Class :character  
+ Mode  :character   Median :22.00   Median :3.000   Mode  :character   Mode  :character  
+                    Mean   :22.06   Mean   :2.787                                        
+                    3rd Qu.:23.00   3rd Qu.:3.000                                        
+                    Max.   :30.00   Max.   :4.000                                        
+> summary(survey, na.rm=T)
+    Gender               Age            Grade       Nationality        Residential area  
+ Length:47          Min.   :19.00   Min.   :2.000   Length:47          Length:47         
+ Class :character   1st Qu.:21.00   1st Qu.:2.000   Class :character   Class :character  
+ Mode  :character   Median :22.00   Median :3.000   Mode  :character   Mode  :character  
+                    Mean   :22.06   Mean   :2.787                                        
+                    3rd Qu.:23.00   3rd Qu.:3.000                                        
+                    Max.   :30.00   Max.   :4.000                                        
+> boxplot(survey$Grade, main="여러분의 학년별 분포", col="yellow")
+> boxplot(survey$Age, main="여러분의 나이 분포", col="green")
+> boxplot(survey$Grade, survey$Age, main="Grade별Age를비교하는박스플롯", col="red", names = c("하년","나이"))
+> #박스플롯 작성2:병렬
+> boxplot(survey$Grade, survey$Age, main="Grade별Age를비교하는박스플롯", col="red")
+> #산점도1
+> plot(x=survey$Grade, y=survey$Age, xlab="학년", ylab="나이", main="학년와 나이의 변화")
+> #산점도2
+> plot(x=survey$Grade, y=survey$Age, xlab="학년", ylab="나이", main="학년와 나이의 변화", pch=24, col="red", bg="yellow", cex=1.5)
+> #산점도3
+> plot(x=survey$Grade, y=survey$Age, xlab="학년", ylab="나이", main="학년와 나이의 변화", type = "h")
