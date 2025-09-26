@@ -12,7 +12,7 @@ prop.table(ECN)#상대 도수로 표시
 # table()함수/구분 2개의 인자를 가지고 교차표를 작성
 table(survey$Gender, Ksurvey$Grade)
 
-#막대그래프1 
+#막대그래프1
 barplot(table(survey$Nationality))
 
 # table()함수/구분 1개의 인자를 가지고 (가로)막대그래프를 작성
