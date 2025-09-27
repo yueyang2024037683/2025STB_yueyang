@@ -37,7 +37,7 @@ boxplot(survey$Grade, main="survey's Grade distributions boxplot within my class
 
 #survey의 Age 박스플롯 작성2
 boxplot(survey$Age, main="survey's Age distributions boxplot within my class", col="green")
-
+ 
 #박스플롯 작성3:병렬 비교 
 boxplot(survey$Grade, survey$Age, main="survey's Grade and Age distributions boxplot within my class", col="green", names = c("Grade","Age"))
  
