@@ -13,17 +13,17 @@ prop.table(ECN)#상대 도수로 표시
 table(survey$Gender, survey$Grade)
 
 #막대그래프1
-barplot(table(survey$Nationality))
+barplot(table(survey$Nationality),xlab="Nationality", ylab="number", main="survey's nationalities distributions within my class",col="yellow")
 
 # table()함수/구분 1개의 인자를 가지고 (가로)막대그래프를 작성
-barplot(table(survey$`Residential area`))#주거지역
+barplot(table(survey$`Residential area`),xlab="Residential area", ylab="number", main="survey's Residential area distributions within my class",col=terrain.colors(12))#주거지역
 
 #누적-막대그래프
 entry <- table(survey$Gender, survey$Grade)
 barplot(entry, legend = TRUE)
 
 #파이차트1
-pie(table(survey$Grade))
+pie(table(survey$Grade),main="survey's Grade distributions within my class",col=terrain.colors(12))
 
 #히스토그램 작성1
 hist(survey$Age,col=terrain.colors(12))
@@ -33,19 +33,19 @@ summary(survey)
 summary(survey, na.rm=T)
                                           
 #survey의 Grade 박스플롯 작성1
-boxplot(survey$Grade, main="여러분의 학년별 분포", col="yellow")
+boxplot(survey$Grade, main="survey's Grade distributions boxplot within my class",  col="blue")
 
 #survey의 Age 박스플롯 작성2
-boxplot(survey$Age, main="여러분의 나이 분포", col="green")
+boxplot(survey$Age, main="survey's Age distributions boxplot within my class", col="green")
 
 #박스플롯 작성3:병렬 비교 
-boxplot(survey$Grade, survey$Age, main="Grade별Age를비교하는박스플롯", col="red", names = c("하년","나이"))
+boxplot(survey$Grade, survey$Age, main="survey's Grade and Age distributions boxplot within my class", col="green", names = c("Grade","Age"))
  
 #산점도1
-plot(x=survey$Grade, y=survey$Age, xlab="학년", ylab="나이", main="학년와 나이의 변화")
+plot(x=survey$Grade, y=survey$Age, xlab="Grade", ylab="Age", main="survey's Grade and Age distributions boxplot within my class")
 
 #산점도2
-plot(x=survey$Grade, y=survey$Age, xlab="학년", ylab="나이", main="학년와 나이의 변화", pch=24, col="red", bg="yellow", cex=1.5)
+plot(x=survey$Grade, y=survey$Age, xlab="Grade", ylab="Age", main="survey's Grade and Age distributions boxplot within my class", pch=24, col="red", bg="yellow", cex=1.5)
 
 #산점도3
-plot(x=survey$Grade, y=survey$Age, xlab="학년", ylab="나이", main="학년와 나이의 변화", type = "h")
+plot(x=survey$Grade, y=survey$Age, xlab="Grade", ylab="Age", main="survey's Grade and Age distributions boxplot within my class", type = "h")
