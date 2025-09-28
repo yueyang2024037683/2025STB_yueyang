@@ -1,6 +1,4 @@
-> library(readxl)
-> survey <- read_excel("04. 2025STB_survey.xlsx")
-> View(survey)
+#1Step.RStudio에서04. 2025STB_survey.xlsx 파일의데이터를import
 
 # 2Step.(데이터분석) survey의 Gender 1개의 인자를 가지고 도수분포표를 작성
 table(survey$Gender)
@@ -46,7 +44,7 @@ boxplot(Age ~ Grade, data=survey, xlab="Grade", ylab="Age", main="Age distributi
 # 11Step.(데이터분석) survey의 Grade를 X값으로 Age를 Y값으로 하는 산점도 
 #산점도1:
 plot(x=survey$Grade, y=survey$Age, xlab="Grade", ylab="Age", main="survey's Grade and Age distributions plot within my class",col="blue", pch=19)
-
+ a
 #산점도2
 plot(x=survey$Grade, y=survey$Age, xlab="Grade", ylab="Age", main="survey's Grade and Age distributions plot within my class", pch=24, bg="yellow", cex=1.5)
 
