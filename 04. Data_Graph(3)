@@ -2,33 +2,33 @@
 > survey <- read_excel("04. 2025STB_survey.xlsx")
 > View(survey)
 
-# 2Step.(데이터분석) survey의Gender1개의 인자를 가지고 도수분포표를 작성
+# 2Step.(데이터분석) survey의 Gender 1개의 인자를 가지고 도수분포표를 작성
 table(survey$Gender)
 
-# 3Step.(데이터분석) survey의Gender1개의 인자를 가지고 상대도수분포표를 작성
+# 3Step.(데이터분석) survey의 Gender 1개의 인자를 가지고 상대도수분포표를 작성
 ECN <- table(survey$Gender)#ECN에 성별의 도수분포표를 대입
 prop.table(ECN)#상대 도수로 표시
 
-# survey의 Gender와Grade2개의 인자를 가지고 교차표를 작성
+# 4Step.(데이터분석) survey의 Gender와 Grade 2개의 인자를 가지고 교차표를 작성
 table(survey$Gender, survey$Grade)
 
-#막대그래프1: survey의Nationality1개의 인자를 가지고 막대그래프를 작성
+# 5Step.(데이터분석) survey의 Nationality 1개의 인자를 가지고 막대그래프를 작성
 barplot(table(survey$Nationality),xlab="Nationality", ylab="number", main="survey's nationalities distributions within my class",col="yellow")
 
-#막대그래프1:survey의 residential area 1개의 인자를 가지고 (가로)막대그래프를 작성
+# 6Step.(데이터분석) survey의 residential area 1개의 인자를 가지고 (가로)막대그래프를 작성
 barplot(table(survey$`Residential area`),xlab="Residential area", ylab="number", main="survey's Residential area distributions within my class",col=terrain.colors(12))
 
-#누적-막대그래프:survey의Gender와Grade2개의 인자를 가지고 막대그래프를 작성
+# 7Step.(데이터분석) survey의 Gender와 Grade2개의 인자를 가지고 막대그래프를 작성
 entry <- table(survey$Gender, survey$Grade)
 barplot(entry, legend = TRUE)
 
-#파이차트1:survey의Grade1개의 인자를 가지고 파이차트를 작성
+# 8Step.(데이터분석) survey의 Grade 1개의 인자를 가지고 파이차트를 작성
 pie(table(survey$Grade),main="survey's Grade distributions within my class",col=terrain.colors(12))
 
-#9Step.(데이터분석) survey의 Age인자를 가지고 히스토그램을 작성
+# 9Step.(데이터분석) survey의 Age인자를 가지고 히스토그램을 작성
 hist(survey$Age,col=terrain.colors(12))
 
-#10Step.(데이터분석 survey의 Grade별Age를 비교하는 박스플롯을 만들어보세요. 그리고 Grade별Age에 대한 기술통계분석을 실시하여 각 박스플롯을 비교 설명
+# 10Step.(데이터분석) survey의 Grade별Age를 비교하는 박스플롯을 만들어보세요. 그리고 Grade별Age에 대한 기술통계분석을 실시하여 각 박스플롯을 비교 설명
 
 #survey의 Grade 박스플롯 작성1
 boxplot(survey$Grade, main="survey's Grade distributions boxplot within my class",  col="blue")
@@ -43,7 +43,7 @@ summary(survey, na.rm=T)
 #박스플롯 작성3:병렬 비교 
 boxplot(survey$Grade, survey$Age, xlab="Grade", ylab="Age", main="survey's Grade and Age distributions boxplot within my class")
 
-#11Step.(데이터분석) survey의 Grade를 X값으로 Age를 Y값으로 하는 산점도 
+# 11Step.(데이터분석) survey의 Grade를 X값으로 Age를 Y값으로 하는 산점도 
 #산점도1:
 plot(x=survey$Grade, y=survey$Age, xlab="Grade", ylab="Age", main="survey's Grade and Age distributions plot within my class")
 
