@@ -41,7 +41,7 @@ summary(survey)
 summary(survey, na.rm=T)
 
 #박스플롯 작성3:병렬 비교 
-boxplot(survey$Grade, survey$Age, xlab="Grade", ylab="Age", main="survey's Grade and Age distributions boxplot within my class")
+boxplot(Age ~ Grade, data=survey, xlab="Grade", ylab="Age", main="Age distribution by Grade", col=c("lightblue","lightgreen","lightpink","lightyellow"))
 
 # 11Step.(데이터분석) survey의 Grade를 X값으로 Age를 Y값으로 하는 산점도 
 #산점도1:
