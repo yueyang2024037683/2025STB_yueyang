@@ -28,7 +28,7 @@ pie(table(survey$Grade), main="Grade Distribution", col=terrain.colors(12))
 # 9Step.(데이터분석) survey의 Age인자를 가지고 히스토그램을 작성
 hist(survey$Age, col=terrain.colors(12), main="Age Distribution", xlab="Age")
 
-# 10Step.(데이터분석) survey의 Grade별Age를 비교하는 박스플롯을 만들어보세요. 그리고 Grade별Age에 대한 기술통계분석을 실시하여 각 박스플롯을 비교 설명
+# 10Step.(데이터분석) survey의 Grade별Age를 비교하는 박스플롯을 작성, 그리고 Grade별Age에 대한 기술통계분석을 실시하여 각 박스플롯을 비교 설명
 
 #survey의 Grade 박스플롯 작성1
 boxplot(survey$Grade, main="survey's Grade distributions boxplot within my class",  col="blue")
