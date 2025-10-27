@@ -75,7 +75,7 @@ foodshop %>%
 #2.주요 업종별로 가장 오래 영업중인 음식점
 foodshop %>%
   filter(!is.na(open_date)&status=="영업") %>% #결측치제거, 영업데이터 추출
-  filter(type%in%c("기타","경양식","분식","일식","중국식","호프/통닭"))%>%
+  filter(type%in%c("횟집","경양식","분식","일식","중국식","호프/통닭","기타"))%>%
   group_by(type) %>%#업종별 분류
   filter(open_date==min(open_date)) %>% #개업일이 가장 빠른 데이터 추출
   select(name, type, open_date, address)
