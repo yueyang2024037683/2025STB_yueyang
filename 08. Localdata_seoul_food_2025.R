@@ -151,12 +151,14 @@ close_trend <- foodshop %>%
   filter(!is.na(open_date)&!is.na(district)) %>% #결측치제외
   group_by(close_year) %>%
   summarise(close_n=n())
+  close_trend <- close_trend %>% 
+    filter(!is.na(close_year), !is.na(close_n)) 
 #open_trend 구조
 str(close_trend)
 #연도별 개업 음식점수 막대그래프
 ggplot(data=close_trend,aes(x=close_year,y=close_n))+
   geom_col()+
-  xlab("연도") + ylab("폐업수")
+  xlab("연도") + ylab("폐업수")+theme_minimal()
 
 #11.개업과 폐업 음식점 통합 그래프
 open_trend1<-rename(open_trend,year=open_year)#연도이름 변경
