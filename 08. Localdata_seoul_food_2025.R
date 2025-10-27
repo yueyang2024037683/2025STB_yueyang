@@ -54,7 +54,7 @@ foodshop$close_year<-substr(foodshop$close_date,1,4)#인허가년도 변수 생�
 #5.address변수
 foodshop$district<-substr(foodshop$address,7,9)#구 정보를 분리하여 변수 생성
 table(foodshop$district)#이상치 확인
-foodshop$district <- ifelse(foodshop$district%in%c("도 제","시 고","시 단", "시 망","시 분","시 수","시 영","시 원","시 일"),NA,foodshop$district)#이상치제거
+foodshop$district <- ifelse (foodshop$district%in%c("도 제","시 고","시 단", "시 망","시 분","시 수","시 영","시 원","시 일","군 서"),NA,foodshop$district)#이상치제거
 table(foodshop$district)#이상치 확인
 
 #최종 확인
