@@ -73,7 +73,7 @@ str(foodshop)
 foodshop %>%
   filter(!is.na(open_date)&status=="영업") %>% #결측치제거, 영업데이터 추출
   filter(open_date==min(open_date)) %>% #개업일이 가장 빠른 데이터 추출
-  select(name, type, open_date, address)
+  select(name, type, open_date, address,open_year,close_year,district)
 
 #2.주요 업종별로 가장 오래 영업중인 음식점
 foodshop %>%
@@ -81,7 +81,7 @@ foodshop %>%
   filter(type%in%c("횟집","경양식","분식","일식","중국식","호프/통닭","기타"))%>%
   group_by(type) %>%#업종별 분류
   filter(open_date==min(open_date)) %>% #개업일이 가장 빠른 데이터 추출
-  select(name, type, open_date, address)
+  select(name, type, open_date, address,open_year,close_year,district)
 
 #3.업종별 개업 비율
 foodshop %>%
@@ -156,12 +156,12 @@ close_trend <- foodshop %>%
   summarise(close_n=n())
   close_trend <- close_trend %>% 
     filter(!is.na(close_year), !is.na(close_n)) 
-#open_trend 구조
+#close_trend 구조
 str(close_trend)
 #연도별 개업 음식점수 막대그래프
 ggplot(data=close_trend,aes(x=close_year,y=close_n))+
   geom_col()+
-  xlab("연도") + ylab("폐업수")+theme_minimal()
+  xlab("연도") + ylab("폐업수")
 
 #11.개업과 폐업 음식점 통합 그래프
 open_trend1<-rename(open_trend,year=open_year)#연도이름 변경
@@ -204,4 +204,4 @@ foodshop %>%
   summarise(n=n()) %>%
   mutate(total=sum(n),pct=round(n/total*100,1))%>% #범주별비율계산
   group_by(type) %>%
-  filter(pct==max(pct))#type별 district비율이 가장 높은 데이터 추출
+  filter(pct==max(pct))%>%arrange(desc(n))#type별 district비율이 가장 높은 데이터 추출
