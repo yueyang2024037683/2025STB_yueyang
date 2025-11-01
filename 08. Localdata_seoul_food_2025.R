@@ -44,11 +44,16 @@ table(foodshop$type)
 
 #3.open_date변수
 range(foodshop$open_date, na.rm = T)
-table(is.na(foodshop$open_date))#결측치 없음
+table(is.na(foodshop$open_date))#결측치 검사
+#na값제외
+foodshop<-foodshop%>%filter(open_date!= '') %>%select(name,type,status,open_date,close_date,address)
 foodshop$open_year<-substr(foodshop$open_date,1,4)#인허가년도 변수 생성
 
 #4.close_date변수
 range(foodshop$close_date, na.rm = T)
+table(is.na(foodshop$close_date))#결측치 검사
+#na값제외
+foodshop<-foodshop%>%filter(close_date!= '') %>%select(name,type,status,open_date,close_date,address)
 foodshop$close_year<-substr(foodshop$close_date,1,4)#인허가년도 변수 생성
 
 #5.address변수
@@ -56,6 +61,25 @@ foodshop$district<-substr(foodshop$address,7,9)#구 정보를 분리하여 변�
 table(foodshop$district)#이상치 확인
 foodshop$district <- ifelse (foodshop$district%in%c("도 제","시 고","시 단", "시 망","시 분","시 수","시 영","시 원","시 일","군 서"),NA,foodshop$district)#이상치제거
 table(foodshop$district)#이상치 확인
+
+
+names(foodshop)
+colnames(foodshop) <- trimws(colnames(foodshop))
+sum(is.na(foodshop$address))
+sum(foodshop$address == "")
+foodshop <- subset(foodshop, !is.na(address) & address != "")
+library(stringr)
+
+foodshop$city <- str_extract(foodshop$address, "[가-힣]+시")
+table(foodshop$city, useNA="ifany")
+foodshop$city <- ifelse(
+  foodshop$city %in% c("시 고", "시 단", "시 망", "시 분", "시 수", "시 영", "시 원", "시 일", "군 서"),
+  NA,
+  foodshop$city
+)
+str(foodshop)
+table(foodshop$city, useNA="ifany")
+
 
 #최종 확인
 str(foodshop)
