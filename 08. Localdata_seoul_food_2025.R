@@ -53,7 +53,7 @@ foodshop$open_year<-substr(foodshop$open_date,1,4)#인허가년도 변수 생성
 range(foodshop$close_date, na.rm = T)
 table(is.na(foodshop$close_date))#결측치 검사
 #na값제외
-foodshop<-foodshop%>%filter(close_date!= '') %>%select(name,type,status,open_date,close_date,address)
+foodshop<-foodshop%>%filter(close_date!= '') 
 foodshop$close_year<-substr(foodshop$close_date,1,4)#인허가년도 변수 생성
 
 #5.address변수
