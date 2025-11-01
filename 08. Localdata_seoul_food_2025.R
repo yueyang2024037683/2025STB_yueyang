@@ -46,7 +46,7 @@ table(foodshop$type)
 range(foodshop$open_date, na.rm = T)
 table(is.na(foodshop$open_date))#결측치 검사
 #na값제외
-foodshop <- foodshop %>%mutate(open_year = ifelse(is.na(open_date) | open_date == "", NA, substr(as.character(open_date), 1, 4)))
+foodshop <- foodshop %>%mutate(open_year = ifelse(is.na(open_date) | open_date == "", NA, substr(as.character(open_date), 1, 4)))%>%filter(!is.na(open_year))#인허가년도 변수 생성
 
 #4.close_date변수
 range(foodshop$close_date, na.rm = T)
