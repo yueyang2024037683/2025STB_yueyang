@@ -46,15 +46,13 @@ table(foodshop$type)
 range(foodshop$open_date, na.rm = T)
 table(is.na(foodshop$open_date))#결측치 검사
 #na값제외
-foodshop<-foodshop%>%filter(open_date!= '') %>%select(name,type,status,open_date,close_date,address)
-foodshop$open_year<-substr(foodshop$open_date,1,4)#인허가년도 변수 생성
+foodshop <- foodshop %>%mutate(open_year = ifelse(is.na(open_date) | open_date == "", NA, substr(as.character(open_date), 1, 4)))
 
 #4.close_date변수
 range(foodshop$close_date, na.rm = T)
 table(is.na(foodshop$close_date))#결측치 검사
 #na값제외
-foodshop<-foodshop%>%filter(close_date!= '') 
-foodshop$close_year<-substr(foodshop$close_date,1,4)#인허가년도 변수 생성
+foodshop<-foodshop%>%mutate(close_year = ifelse(is.na(close_date) | close_date == "", NA, substr(as.character(close_date), 1, 4)))%>%filter(!is.na(close_year))#인허가년도 변수 생성
 
 #5.address변수
 foodshop$district<-substr(foodshop$address,7,9)#구 정보를 분리하여 변수 생성
